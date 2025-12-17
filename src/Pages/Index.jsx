@@ -7,6 +7,8 @@ import WeatherCard from "../components/WeatherCard";
 import CurrencyCard from "../components/CurrencyCard";
 import LanguageCard from "../components/LanguageCard";
 import { fetchTravelData } from "../services/travelService";
+import PointsOfInterest from "../components/PointsOfInterest";
+import ToursSection from "../components/ToursSection";
 
 import React from 'react'
 
@@ -79,7 +81,11 @@ const Index = () => {
                 />
                
               </div>
-              
+              {/* Right Column - POIs & Tours */}
+              <div className="lg:col-span-2 space-y-6">
+                <PointsOfInterest places={travelData.pointsOfInterest} />
+                <ToursSection tours={travelData.tours} />
+              </div>
             </div>
           </main>
           
