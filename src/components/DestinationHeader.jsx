@@ -1,5 +1,5 @@
 import { ArrowLeft, MapPin, Plane } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import React from "react";
 
 const DestinationHeader = ({ destination, country, flag, onBack }) => {
   return (
@@ -7,14 +7,12 @@ const DestinationHeader = ({ destination, country, flag, onBack }) => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
               onClick={onBack}
-              className="rounded-full"
+              className="hover:bg-secondary hover:text-secondary-foreground mt-6 h-10 w-10 flex items-center justify-center rounded"
             >
               <ArrowLeft className="w-5 h-5" />
-            </Button>
+            </button>
 
             <div className="flex items-center gap-3">
               <span className="text-4xl">{flag}</span>

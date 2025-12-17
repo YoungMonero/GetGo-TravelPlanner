@@ -1,7 +1,7 @@
 export async function fetchExchangeRate(currencyCode) {
     try {
       const response = await fetch(
-        `https://api.exchangerate.host/latest?base=USD&symbols=${currencyCode}`
+        'https://open.er-api.com/v6/latest/USD'
       );
   
       if (!response.ok) {
@@ -10,14 +10,17 @@ export async function fetchExchangeRate(currencyCode) {
   
       const data = await response.json();
   
-      if (data.rates && data.rates[currencyCode]) {
-        return data.rates[currencyCode];
+      const rate = data?.rates?.[currencyCode];
+  
+      if (!rate) {
+        console.warn(`Currency not supported: ${currencyCode}`);
+        return 1;
       }
   
-      throw new Error('Currency not found in response');
+      return rate;
     } catch (error) {
       console.error('Exchange rate API error:', error);
-      return 1.0; // optional default if you want a minimal fallback
+      return 1;
     }
   }
   

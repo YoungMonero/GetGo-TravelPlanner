@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ArrowRightLeft, DollarSign } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./Card";
-import { Input } from "./Input";     
+import React from "react";
+   
 
 const CurrencyCard = ({ currency }) => {
   const [amount, setAmount] = useState("100");
@@ -53,11 +54,11 @@ const CurrencyCard = ({ currency }) => {
                 <label className="text-sm text-muted-foreground mb-1 block">
                   From ({fromCurrency})
                 </label>
-                <Input
+                <input
                   type="number"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="text-lg font-semibold"
+                  className="flex h-12 w-full rounded-xl border border-input bg-card px-4 py-3 text-lg font-semibold text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                 />
               </div>
               <button

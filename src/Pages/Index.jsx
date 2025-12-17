@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import HeroSection from "@/components/travel/HeroSection";
-import LoadingState from "@/components/travel/LoadingState";
+import HeroSection from "../components/HeroSection";
+import LoadingState from "../components/LoadingState";
+import DestinationHeader from "../components/DestinationHeader";
+import WeatherCard from "../components/WeatherCard";
+import CurrencyCard from "../components/CurrencyCard";
+import LanguageCard from "../components/LanguageCard";
+import { fetchTravelData } from "../services/travelService";
 
 import React from 'react'
 
@@ -45,9 +50,53 @@ const Index = () => {
       }
 
   return (
-    <div>
-      
-    </div>
+    <>
+            {!travelData ? (
+        <div>
+          <HeroSection onSearch={handleSearch} />
+        </div>
+      ) : (
+        <div className="min-h-screen bg-background">
+          <DestinationHeader
+            destination={travelData.destination.name}
+            country={travelData.country.name}
+            flag={travelData.country.flag}
+            onBack={handleBack}
+          />
+          
+          <main className="container mx-auto px-4 py-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Left Column - Weather & Info */}
+              <div className="lg:col-span-1 space-y-6">
+                <WeatherCard
+                  weather={travelData.weather}
+                  destination={travelData.destination.name}
+                />
+                <CurrencyCard currency={travelData.country.currency} />
+                <LanguageCard
+                  languages={travelData.country.languages}
+                  country={travelData.country.name}
+                />
+               
+              </div>
+              
+            </div>
+          </main>
+          
+          {/* Footer */}
+          <footer className="border-t border-border mt-12 py-8">
+            <div className="container mx-auto px-4 text-center text-muted-foreground">
+              <p className="font-display text-lg mb-2">
+                GetGo Travel Companion
+              </p>
+              <p className="text-sm">
+                Your adventure awaits. Explore with confidence.
+              </p>
+            </div>
+          </footer>
+        </div>
+      )}
+    </>
   )
 }
 
