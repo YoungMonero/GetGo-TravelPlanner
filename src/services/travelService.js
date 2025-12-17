@@ -2,6 +2,7 @@ import { searchLocation } from './geocodingApi';
 import { fetchCountryInfo, fetchCountryByName } from './countryApi';
 import { fetchWeather } from './weatherApi';
 import { fetchExchangeRate } from './exchangeRateApi';
+import { generatePOIs, generateTours } from './poisApi';
 
 export async function fetchTravelData(query) {
     try {
@@ -25,6 +26,11 @@ export async function fetchTravelData(query) {
           exchangeRate = await fetchExchangeRate(countryInfo.currency.code);
         }
 
+        const currencySymbol = countryInfo?.currency?.symbol || '$';
+        const pois = generatePOIs(location.name, location.country);
+        const tours = generateTours(location.name, currencySymbol);
+
+
         const travelData = {
             destination: {
               name: location.name,
@@ -35,8 +41,8 @@ export async function fetchTravelData(query) {
               }
             },
             weather,
-            // pointsOfInterest: pois,
-            // tours,
+            pointsOfInterest: pois,
+            tours,
             country: countryInfo || {
               name: location.country,
               capital: 'Unknown',
