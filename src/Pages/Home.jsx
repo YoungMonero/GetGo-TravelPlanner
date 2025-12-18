@@ -12,7 +12,7 @@ import ToursSection from "../components/ToursSection";
 
 import React from 'react'
 
-const Index = () => {
+const Home = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [travelData, setTravelData] = useState(null);
@@ -106,4 +106,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Home
