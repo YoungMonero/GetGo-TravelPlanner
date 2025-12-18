@@ -33,33 +33,42 @@ This project was built as a learning-focused application, prioritizing readabili
 GetGo-TravelGuild/
 ├── public/
 ├── src/
-│ ├── assets/
-│ ├── components/
-│ │ ├── Card.jsx
-│ │ ├── CurrencyCard.jsx
-│ │ ├── DestinationHeader.jsx
-│ │ ├── HeroSection.jsx
-│ │ ├── LanguageCard.jsx
-│ │ ├── LoadingState.jsx
-│ │ ├── PointsOfInterest.jsx
-│ │ ├── ToursSection.jsx
-│ │ └── WeatherCard.jsx
-│ ├── pages/
-│ │ ├── Index.jsx
-│ │ └── NotFound.jsx
-│ ├── services/
-│ │ ├── countryApi.js
-│ │ ├── exchangeRateApi.js
-│ │ ├── geocodingApi.js
-│ │ ├── poisApi.js
-│ │ ├── travelService.js
-│ │ └── weatherApi.js
-│ ├── App.css
-│ ├── App.jsx
-│ ├── index.css
-│ └── main.jsx
-├── .gitignore
+│   ├── assets/
+│   │   └── images/
+│   │
+│   ├── components/
+│   │   ├── ui/
+│   │   │   └── Card.jsx
+│   │   │
+│   │   ├── CurrencyCard.jsx
+│   │   ├── DestinationHeader.jsx
+│   │   ├── HeroSection.jsx
+│   │   ├── LanguageCard.jsx
+│   │   ├── LoadingState.jsx
+│   │   ├── PointsOfInterest.jsx
+│   │   ├── ToursSection.jsx
+│   │   └── WeatherCard.jsx
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   └── NotFound.jsx
+│   │
+│   ├── services/
+│   │   ├── countryApi.js
+│   │   ├── exchangeRateApi.js
+│   │   ├── geocodingApi.js
+│   │   ├── poisApi.js
+│   │   ├── travelService.js
+│   │   └── weatherApi.js
+│   │
+│   ├── styles/
+│   │   └── index.css
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
 ├── index.html
+├── .gitignore
 ├── package.json
 ├── tailwind.config.js
 ├── vite.config.js
