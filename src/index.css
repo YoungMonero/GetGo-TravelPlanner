@@ -1,1 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 @import "tailwindcss";
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Ocean-inspired travel palette */
+    --background: 40 33% 98%;
+    --foreground: 200 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 25% 15%; /* FIX: Removed stray 'å' character */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 25% 15%;
+
+    /* Deep ocean teal */
+    --primary: 185 65% 28%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Warm sand */
+    --secondary: 35 30% 92%;
+    --secondary-foreground: 200 25% 15%;
+
+    --muted: 35 20% 94%;
+    --muted-foreground: 200 15% 45%;
+
+    /* Coral sunset accent */
+    --accent: 15 85% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 25% 88%;
+    --input: 35 25% 88%;
+    --ring: 185 65% 28%;
+
+    --radius: 0.75rem;
+
+    /* Custom travel tokens */
+    --coral: 15 85% 60%;
+    --coral-light: 15 85% 70%;
+    --ocean: 185 65% 28%;
+    --ocean-light: 185 50% 45%;
+    --ocean-dark: 185 70% 20%;
+    --golden: 42 95% 55%;
+    --golden-light: 42 95% 75%;
+    --sand: 35 30% 92%;
+    --sand-dark: 35 25% 85%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(185 65% 28%) 0%, hsl(200 60% 35%) 50%, hsl(185 50% 45%) 100%);
+    --gradient-sunset: linear-gradient(135deg, hsl(15 85% 60%) 0%, hsl(35 90% 60%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(35 30% 98%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px -2px hsl(200 25% 15% / 0.08);
+    --shadow-md: 0 8px 24px -6px hsl(200 25% 15% / 0.12);
+    --shadow-lg: 0 16px 48px -12px hsl(200 25% 15% / 0.18);
+    --shadow-glow: 0 0 40px hsl(185 65% 28% / 0.2);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 200 25% 10%;
+    --foreground: 40 33% 95%;
+
+    --card: 200 20% 14%;
+    --card-foreground: 40 33% 95%;
+
+    --popover: 200 20% 14%;
+    --popover-foreground: 40 33% 95%;
+
+    --primary: 185 55% 50%;
+    --primary-foreground: 200 25% 10%;
+
+    --secondary: 200 20% 18%;
+    --secondary-foreground: 40 33% 95%;
+
+    --muted: 200 20% 20%;
+    --muted-foreground: 200 15% 60%;
+
+    --accent: 15 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 20% 22%;
+    --input: 200 20% 22%;
+    --ring: 185 55% 50%;
+
+    --ocean: 185 55% 50%;
+    --ocean-light: 185 50% 60%;
+    --ocean-dark: 185 60% 35%;
+    --coral: 15 80% 55%;
+    --coral-light: 15 80% 65%;
+    --golden: 42 90% 50%;
+    --golden-light: 42 90% 65%;
+    --sand: 200 20% 18%;
+    --sand-dark: 200 20% 14%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(200 25% 10%) 0%, hsl(185 40% 20%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(200 20% 14%) 0%, hsl(200 20% 12%) 100%);
+
+    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 8px 24px -6px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 16px 48px -12px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 40px hsl(185 55% 50% / 0.15);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    /* Rely on the font-sans utility defined in tailwind.config.js */
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    /* Rely on the font-display utility defined in tailwind.config.js */
+    font-family: 'Playfair Display', serif;
+  } 
+}
+
+
+
+@layer utilities {
+  /* Removed redundant .font-display and .font-sans definitions */
+  
+  .text-gradient-hero {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-sunset {
+    background: var(--gradient-sunset);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-md);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

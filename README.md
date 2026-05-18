@@ -1,16 +1,131 @@
-# React + Vite
+# GetGo TravelGuild
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GetGo TravelGuild is a simple travel information web application that helps users explore destinations, points of interest, tours, and activities. The app focuses on clean UI, simplicity, and practical use of APIs without over-engineering.
 
-Currently, two official plugins are available:
+This project was built as a learning-focused application, prioritizing readability, maintainability, and straightforward React patterns.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Browse destinations and travel-related content
+- View points of interest with images, categories, and ratings
+- Explore tours and activities with duration, pricing, and ratings
+- Currency handling with fallback values to prevent app crashes
+- Responsive layout for desktop and mobile screens
+- Clean and simple UI using reusable card components
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- React (JavaScript / JSX)
+- React Router
+- Tailwind CSS
+- Lucide React Icons
+- Fetch API for external data
+- Simple component-based architecture
+
+---
+
+## Project Structure
+
+GetGo-TravelGuild/
+├── public/
+├── src/
+│   ├── assets/
+│   │   └── images/
+│   │
+│   ├── components/
+│   │   ├── ui/
+│   │   │   └── Card.jsx
+│   │   │
+│   │   ├── CurrencyCard.jsx
+│   │   ├── DestinationHeader.jsx
+│   │   ├── HeroSection.jsx
+│   │   ├── LanguageCard.jsx
+│   │   ├── LoadingState.jsx
+│   │   ├── PointsOfInterest.jsx
+│   │   ├── ToursSection.jsx
+│   │   └── WeatherCard.jsx
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   └── NotFound.jsx
+│   │
+│   ├── services/
+│   │   ├── countryApi.js
+│   │   ├── exchangeRateApi.js
+│   │   ├── geocodingApi.js
+│   │   ├── poisApi.js
+│   │   ├── travelService.js
+│   │   └── weatherApi.js
+│   │
+│   ├── styles/
+│   │   └── index.css
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── index.html
+├── .gitignore
+├── package.json
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+
+
+
+---
+
+## API Usage
+
+The app consumes multiple external APIs, each handled in its own service file:
+
+- Weather data
+- Country and language information
+- Geocoding (location lookup)
+- Points of interest
+- Tours and activities
+- Currency exchange rates
+
+All API logic is centralized inside the `services` folder to keep components clean and focused on UI rendering.
+
+---
+
+## Currency Exchange Handling
+
+Currency exchange rates are fetched using a public API.
+
+If:
+- the API request fails
+- a currency code is missing
+- or the response is invalid
+
+the app safely falls back to a default value to prevent UI crashes and broken calculations.
+
+---
+
+## Routing
+
+- `/` → Main travel page
+- `*` → Custom 404 Not Found page
+
+React Router is used to handle navigation.
+
+---
+
+## Installation and Setup
+
+1. Clone the repository
+```bash
+
+git clone <your-repository-url>
+
+cd GetGo-TravelGuild
+
+npm install
+
+npm run dev
+
+http://localhost:5173
